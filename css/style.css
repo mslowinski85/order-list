@@ -13,6 +13,23 @@ html {
     margin: 30px;
 }
 
+.body__container {
+    background-color: #ddd; 
+    padding-bottom: 20px;
+}
 
+.body__label {
+    font-size: xx-large;
+    font-weight: 900;
+    
+}
+
+.body__container--addNewTaskLabel {
+    background-color: white;
+    font-size: large;
+    font-weight: 900;
+    margin-bottom: 1px;
+    padding: 10px;
+}
 
 
