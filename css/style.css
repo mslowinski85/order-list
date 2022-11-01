@@ -1,0 +1,51 @@
+html {
+    box-sizing: border-box;
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+.body {
+    background-color: #ddd;
+    padding: 20px;
+    font-family: "Lato", sans-serif;
+    margin: 30px;
+}
+
+.container {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    
+}
+
+.container__label {
+    font-size: large;
+    font-weight: 900;
+}
+
+.container--toDoList {
+    margin-top: 5px;
+    padding: 20px;
+}
+
+.container--addNewTask {
+    padding: 20px;
+}
+
+.container--input {
+    padding: 20px;
+}
+
+.container__input {
+    padding: 5px;
+    border: 1px solid #bbb;
+}
+
+.container__button {
+    background-color: teal;
+    color: #fff;
+    border: none;
+    padding: 5px;
+}
