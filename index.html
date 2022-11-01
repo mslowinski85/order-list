@@ -27,20 +27,49 @@
     <link rel="icon" href="images/logo.png" />
   </head>
   <body class="body">
-    <header class="header">
-        <h1>Lista zadań</h1>
-    </header>
-    <div class="container container--addNewTask">
-        <label class="container__label">Dodaj nowe zadanie</label>
+
+    <div class="flex">
+        <div class="flex__container">
+            <label class="flex__label">Lista zadań</label>
+        </div>
+        <div class="flex__container flex__container--addNewTaskLabel ">
+            <label >Dodaj nowe zadanie</label>
+        </div>
+        <div class="flex__container flex__container--addNewTask">
+            <input class="flex__input" placeholder="Co jest do zrobienia?" autofocus>
+            <button class="flex__button">Dodaj zadanie</butto>
+        </div>
+        <div class="flex__container flex__container--toDoList">
+            <label class="flex__label flex__label--toDoListLabel">Lista zadań</label>
+        </div>
+        <div class="flex__container">
+
+        </div>
     </div>
-    <div class="container container--input">
-        <input class="container__input" placeholder="Co jest do zrobienia?">
-        <button class="container__button">Dodaj zadanie</button>
+   
+    <!-- <div class="containerNewTask">
+        <label class="containerNewTask__label">Dodaj nowe zadanie</label>
     </div>
-    <div class="container container--toDoList">
-        <label class="container__label">Lista zadań</label>
+    <div class="containerAddNewTask">
+        <div class="containerAddNewTask containerAddNewTask--border"> 
+            <input class="containerAddNewTask__input" placeholder="Co jest do zrobienia?" autofocus>
+        </div>
+       <div class="containerAddNewTask containerAddNewTask--border">
+        <button class="containerAddNewTask__button">Dodaj zadanie</button>
+       </div>
+        
     </div>
-    
+    <div class="containerToDoList">
+        <label class="containerToDoList__label">Lista zadań</label>
+    </div>
+    <div class="containerToDoList containerToDoList--padding">
+        <ul>
+            <li>1</li>
+        </ul>
+    </div>
+ 
+
+    </div> -->
 
   </body>
 </html>
