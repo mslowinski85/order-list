@@ -13,39 +13,60 @@ html {
     margin: 30px;
 }
 
-.container {
-    background-color: white;
-    padding: 10px;
-    border: 1px solid #ddd;
-    
+.flex {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid ;
+    max-width: 800px;
 }
 
-.container__label {
+.flex__container {
+    background-color: #ddd; 
+}
+
+.flex__label {
+    font-size: xx-large;
+    font-weight: 900;
+    margin: 10px;
+}
+
+.flex__container--addNewTaskLabel {
+    background-color: white;
+    font-size: large;
+    font-weight: 900;
+    margin-bottom: 1px;
+    padding: 10px;
+}
+
+.flex__container--addNewTask {
+    background-color: white;
+    padding: 10px;
+}
+
+.flex__button {
+    background-color: teal;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+}
+
+.flex__input {
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    max-width: 500px;
+}
+
+.flex__container--toDoList {
+    background-color: white;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.flex__label--toDoListLabel{
     font-size: large;
     font-weight: 900;
 }
 
-.container--toDoList {
-    margin-top: 5px;
-    padding: 20px;
-}
 
-.container--addNewTask {
-    padding: 20px;
-}
-
-.container--input {
-    padding: 20px;
-}
-
-.container__input {
-    padding: 5px;
-    border: 1px solid #bbb;
-}
-
-.container__button {
-    background-color: teal;
-    color: #fff;
-    border: none;
-    padding: 5px;
-}
