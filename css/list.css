@@ -1,0 +1,23 @@
+.list {
+    display: grid;
+    padding: 0px;
+}
+
+.list__item {
+    list-style: none;
+    padding: 5px;
+}
+
+.list__buttonDone{
+    background-color: green;
+    border: none;
+    height: 20px;
+    width: 20px;
+}
+
+.list__buttonDelete{
+    background-color: red;
+    border: none;
+    height: 20px;
+    width: 20px;
+}
