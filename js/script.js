@@ -6,8 +6,8 @@ const render = () => {
 
     for (const task of tasks) {
         htmlString += `
-        <li>
-            ${task.content}
+        <li class="list__item">
+            <button class="list__buttonDone"></button>${task.content} <button class="list__buttonDelete"></button>
         </li>
         `;
     }
