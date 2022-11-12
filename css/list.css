@@ -1,23 +1,36 @@
 .list {
-    display: grid;
-    padding: 0px;
-}
-
-.list__item {
-    list-style: none;
     padding: 5px;
 }
 
-.list__buttonDone{
-    background-color: green;
-    border: none;
-    height: 20px;
-    width: 20px;
+.list__item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+   
+    /* display: grid;
+    grid-template-columns: 5% 90% 5%; */
+    list-style: none;
 }
 
-.list__buttonDelete{
-    background-color: red;
-    border: none;
-    height: 20px;
-    width: 20px;
+.list__item--done{
+    text-decoration: line-through;
 }
+
+.list__button{
+    background-color: green;
+    border: none;
+    height: 25px;
+    width: 25px;
+}
+
+.list__button--delete{
+    background-color: red;
+}
+
+
+/* .list__Container{
+    display: flex;
+    justify-content: space-between;
+} */
+
