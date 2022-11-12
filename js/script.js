@@ -1,35 +1,50 @@
 {
     const tasks = [];
 
+const removeTask = (taskIndex) => {
+    tasks.splice(taskIndex, 1);
+}
+
+const doneTask = (taskIndex) => {
+    tasks[taskIndex].done = !tasks[taskIndex].done;
+    render();
+}
+
+
 const render = () => {
     let htmlString = "";
 
     for (const task of tasks) {
         htmlString += `
        
-        <li class="list__item"
-            ${task.done ? "class=list__item--done" : ""}
+        <li 
+        class="list__item${task.done ? " list__item--done" : ""}"
         >
             <button class="list__button js-done"></button>
             ${task.content} 
             <button class="list__button list__button--delete js-remove"></button> 
         </li>
-      
         <hr>
         `;
     }
 
     document.querySelector(".js-tasks").innerHTML = htmlString;
 
-    const doneButton = document.querySelector(".js-done");
+    const toggleDoneButtons = document.querySelectorAll(".js-done");
 
-    // doneButton.classList.toggle("list__item--done");
+    toggleDoneButtons.forEach((toggleButton, index) => {
+        toggleButton.addEventListener("click", () => {
+            doneTask(index);
+            render();
+        })
+    })
+     
 
     const removeButtons = document.querySelectorAll(".js-remove");
 
     removeButtons.forEach((removeButton, index) => {
         removeButton.addEventListener("click", () => {
-            tasks.splice(index, 1);
+            removeTask(index);
             render();
         });
         
