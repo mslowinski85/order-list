@@ -1,6 +1,12 @@
 {
   const tasks = [];
 
+  const onFocus = () => {
+    document.getElementById("focusButton").addEventListener("click", () => {
+      document.getElementById("inputText").focus();
+    });
+  };
+
   const removeTask = (taskIndex) => {
     tasks.splice(taskIndex, 1);
     render();
@@ -59,6 +65,7 @@
     tasks.push({
       content: newTaskContent,
     });
+    document.getElementById("inputText").value = "";
     render();
   };
   const onFormSubmit = (event) => {
@@ -74,6 +81,7 @@
 
   const init = () => {
     render();
+    onFocus();
 
     const form = document.querySelector(".js-form");
 
