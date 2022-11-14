@@ -3,7 +3,7 @@
 
   const onFocus = () => {
     document.getElementById("focusButton").addEventListener("click", () => {
-      document.getElementById("inputText").focus();
+      document.getElementById("inputTask").focus();
     });
   };
 
@@ -52,7 +52,6 @@
                 🗑
             </button> 
         </li>
-        <hr>
         `;
     }
 
@@ -65,7 +64,7 @@
     tasks.push({
       content: newTaskContent,
     });
-    document.getElementById("inputText").value = "";
+    document.getElementById("inputTask").value = "";
     render();
   };
   const onFormSubmit = (event) => {
