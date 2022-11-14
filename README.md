@@ -9,11 +9,11 @@
 ## Description
 
 It's a first version of ***"To-Do List"*** web application, which You can use the following functions:
-- add new task,
-- delete existing task,
-- check done task.
+- **"Add"** new task,
+- **"Delete"** existing task,
+- **"Check"** done task.
 
-This application can grow in new functions with the next version.
+This application can grow in new functions with the next versions.
 
 ## Used technologies
 
