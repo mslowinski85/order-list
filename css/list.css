@@ -8,6 +8,8 @@
     grid-gap: 10px;
     word-break: break-all;
     list-style: none;
+    padding: 10px 0px;
+    border-bottom: 2px solid #ccc;
 }
 
 .list__item--done{
@@ -17,6 +19,7 @@
 .list__button{
     background-color: green;
     border: none;
+    font-weight: bold;
     height: 25px;
     width: 25px;
     color: white;
