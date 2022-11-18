@@ -1,5 +1,6 @@
 .list {
     padding: 0px;
+    margin: 5px 0px;
 }
 
 .list__item {
@@ -32,7 +33,7 @@
 }
 
 .list__button:active{
-    border: 2px solid #bbb;
+    border: 1px solid black;
     background-color: hsl(120, 100%, 35%);
 }
 
