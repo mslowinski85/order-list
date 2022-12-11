@@ -1,6 +1,7 @@
 {
   let tasks = [];
-  let hideDoneTask = false; //
+  let hideDoneTask = false;
+  //let buttonsHidden = false;
 
   const onFocus = () => {
     document.getElementById("focusButton").addEventListener("click", () => {
@@ -67,12 +68,25 @@
     document.querySelector(".js-tasks").innerHTML = htmlString;
   };
 
-  const renderButtons = () => {};
+  const renderButtons = () => {
+    let htmlButtonString = "";
+
+    console.log(tasks.length);
+    if (tasks.length === 0) {
+      return;
+    } else {
+      htmlButtonString = `
+        <button class="body__buttons">Ukryj ukończone</button>
+        <button class="body__buttons">Ukończ wszystkie</button>
+    `;
+
+      document.querySelector(".js-buttons").innerHTML = htmlButtonString;
+    }
+  };
 
   const bindButtonsEvents = () => {
     //if sprawdzający czy po wyrenderowaniu przycisk w ogóle jest
     //Jeśli tak to łapie eventListenera
-   
   };
 
   const render = () => {
