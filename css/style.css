@@ -21,7 +21,25 @@ html {
 
 .body__label {
     font-size: xx-large;
-    font-weight: 900;
+    font-weight: 900;   display: grid;
+    grid-template-columns: 1fr auto auto;
+    word-break: break-all;
+    grid-gap: 10px;
+}
+
+.body__buttons {
+    border: none;
+    color: hsl(180, 100%, 25%);
+    background-color: white;
+    font-size: medium;
+}
+
+.body__buttons:active{
+    border: 1px solid black;
+}
+
+.body__buttons:hover {
+    color: hsl(180, 100%, 35%);
 }
 
 .body__container--addNewTaskLabel {
