@@ -1,6 +1,8 @@
 {
   let tasks = [];
   let hideDoneTask = false;
+  let doneTasks = false;
+  let doneTask = false;
   //let buttonsHidden = false;
 
   const onFocus = () => {
@@ -19,9 +21,46 @@
     render();
   };
 
-  const doneTaskToggle = (taskIndex) => {
-    tasks = tasks.map();
+  const doneTaskToggle = (taskIndex) => { //działa tylko jak się klika w ten sam task
+    const tasksLength = tasks.length;
+    if (doneTask === false){
+      tasks = [
+        ...tasks.slice(0, taskIndex),
+        { ...tasks[taskIndex], done: true },
+        ...tasks.slice(taskIndex + 1, tasksLength),
+      ];
+      doneTask = true;
+    }else {
+      tasks = [
+        ...tasks.slice(0, taskIndex),
+        { ...tasks[taskIndex], done: false },
+        ...tasks.slice(taskIndex + 1, tasksLength),
+      ];
+      doneTask = false;
+    }
+    
     //tasks[taskIndex].done = !tasks[taskIndex].done;
+    //renderTasks();
+    render();
+  };
+
+  const doneAllTasksToggle = () => { //nie działa
+    if (doneTasks === false) {
+      for (const taskIndex of tasks) {
+        tasks = [
+          { ...tasks[taskIndex], done: true }
+        ];
+      }
+      doneTasks = true;
+    } else {
+      for (const taskIndex of tasks) {
+        tasks = [
+          { ...tasks[taskIndex], done: false }
+        ];
+      }
+      doneTasks = false;
+    }
+
     render();
   };
 
@@ -43,6 +82,23 @@
         removeTask(index);
       });
     });
+  };
+
+  const bindButtonsEvents = () => {
+    //if sprawdzający czy po wyrenderowaniu przycisk w ogóle jest
+    //Jeśli tak to łapie eventListenera
+    const endAllTasksButton = document.querySelector(".js-endAllTasks");
+
+    console.log(endAllTasksButton);
+    if (endAllTasksButton === null) {
+      return;
+    } else {
+      endAllTasksButton.forEach((endAllTasks) => {
+        endAllTasks.addEventListener("click", () => {
+          doneAllTasksToggle();
+        });
+      });
+    }
   };
 
   const renderTasks = () => {
@@ -76,17 +132,20 @@
       return;
     } else {
       htmlButtonString = `
-        <button class="body__buttons">Ukryj ukończone</button>
-        <button class="body__buttons">Ukończ wszystkie</button>
-    `;
-
-      document.querySelector(".js-buttons").innerHTML = htmlButtonString;
+      
+        <button class="body__buttons  js-showEndTasks">
+          Ukryj ukończone
+        </button> 
+      </span>
+      <span>  
+        <button class="body__buttons js-endAllTasks">
+          Ukończ wszystkie
+        </button>
+      </span>
+        `;
     }
-  };
 
-  const bindButtonsEvents = () => {
-    //if sprawdzający czy po wyrenderowaniu przycisk w ogóle jest
-    //Jeśli tak to łapie eventListenera
+    document.querySelector(".js-buttons").innerHTML = htmlButtonString;
   };
 
   const render = () => {
