@@ -1,5 +1,5 @@
 {
-  const tasks = [];
+  let tasks = [];
   let hideDoneTask = false; //
 
   const onFocus = () => {
@@ -9,12 +9,18 @@
   };
 
   const removeTask = (taskIndex) => {
-    tasks.splice(taskIndex, 1);
+    const tasksLength = tasks.length;
+    tasks = [
+      ...tasks.slice(0, taskIndex),
+      ...tasks.slice(taskIndex + 1, tasksLength),
+    ];
+    //tasks.splice(taskIndex, 1); remove one element at index "taskIndex"
     render();
   };
 
   const doneTaskToggle = (taskIndex) => {
-    tasks[taskIndex].done = !tasks[taskIndex].done;
+    tasks = tasks.map();
+    //tasks[taskIndex].done = !tasks[taskIndex].done;
     render();
   };
 
