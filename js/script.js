@@ -1,5 +1,6 @@
 {
   const tasks = [];
+  let hideDoneTask = false; //
 
   const onFocus = () => {
     document.getElementById("focusButton").addEventListener("click", () => {
@@ -24,7 +25,7 @@
       toggleButton.addEventListener("click", () => {
         doneTaskToggle(index);
       });
-    }); 
+    });
   };
 
   const bindRemoveEvents = () => {
@@ -37,11 +38,11 @@
     });
   };
 
-const renderTasks = () => {
-  let htmlString = "";
+  const renderTasks = () => {
+    let htmlString = "";
 
-  for (const task of tasks) {
-    htmlString += `
+    for (const task of tasks) {
+      htmlString += `
      
       <li class="list__item">
           <button class="list__button js-done">
@@ -55,16 +56,18 @@ const renderTasks = () => {
           </button> 
       </li>
       `;
-  }
+    }
 
-  document.querySelector(".js-tasks").innerHTML = htmlString;
-};
+    document.querySelector(".js-tasks").innerHTML = htmlString;
+  };
 
-const renderButtons = () => {
+  const renderButtons = () => {};
 
-
-};
-
+  const bindButtonsEvents = () => {
+    //if sprawdzający czy po wyrenderowaniu przycisk w ogóle jest
+    //Jeśli tak to łapie eventListenera
+   
+  };
 
   const render = () => {
     renderTasks();
@@ -72,13 +75,15 @@ const renderButtons = () => {
 
     bindRemoveEvents();
     bindToggleDoneEvents();
+    bindButtonsEvents();
   };
 
   const addNewTask = (newTaskContent) => {
-    tasks.push({
-      content: newTaskContent,
-    });
-    document.getElementById("inputTask").value = "";
+    // tasks.push({
+    //   content: newTaskContent,
+    // });
+    // document.getElementById("inputTask").value = "";
+    tasks = [...tasks, { content: newTaskContent }];
     render();
   };
   const onFormSubmit = (event) => {
