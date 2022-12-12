@@ -46,22 +46,15 @@
   };
 
   const doneAllTasksToggle = () => {
-    //nie działa
-    //   if (doneTasks === false) {
-    let tasksLength = tasks.length - 1;
-    for (const taskIndex in 1) {
-      console.log("liczba zadań " + tasksLength);
-      tasks = [{ ...tasks[taskIndex], done: true }];
-      // tasks += tasks;
-    }
-    //     doneTasks = true;
-    //   } else {
-    // for (const taskIndex of tasks) {
-    //   tasks = [
-    //     { ...tasks[taskIndex], done: false }
-    //   ];
-    // }
-    // doneTasks = false;
+
+     for (const task in tasks) {
+      // console.log(`${task}: ${tasks[task].content}`);
+        tasks = [
+          {...tasks[task], done: true}, //zakańcza tylko pierwszy task - dlaczego? 
+        ];
+       //console.log("ile tasków: " + tasks.length);
+  
+     }
     render();
   };
 
@@ -113,8 +106,8 @@
     if (hideAllDoneTasksButton === null) {
       return;
     } else {
-      hideAllDoneTasksButton.addEventListener("click", () => {
-        showHideEndTasks();
+      hideAllDoneTasksButton.addEventListener("click", (index) => {
+        showHideEndTasks(index);
       });
     }
   };
