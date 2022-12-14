@@ -2,7 +2,7 @@
   let tasks = [];
   let hideDoneTask = false;
   //let doneTasks = false;
-  let doneTask = false;
+  // let doneTask = false;
   //let buttonsHidden = false;
 
   const onFocus = () => {
@@ -37,7 +37,7 @@
     for (const task in tasks) {
       // console.log(`${task}: ${tasks[task].content}`);
       tasks = [
-        { ...tasks[task], done: true }, //zakańcza tylko pierwszy task - dlaczego?
+        { ...tasks[task], done: !task[task].done }, //zakańcza tylko pierwszy task - dlaczego?
       ];
       //   editIndex += 1;
       //tasks = tasks[task].map(({done}) => done);
@@ -83,20 +83,14 @@
     );
 
     console.log(endAllTasksButton);
-    if (endAllTasksButton === null) {
-      return;
-    } else {
-      //endAllTasksButton.forEach((endAllTasks) => {
+    if (endAllTasksButton !== null) {
       endAllTasksButton.addEventListener("click", () => {
         doneAllTasksToggle();
       });
-      //});
     }
-    if (hideAllDoneTasksButton === null) {
-      return;
-    } else {
+    if (hideAllDoneTasksButton !== null) {
       hideAllDoneTasksButton.addEventListener("click", (index) => {
-        showHideEndTasks(index);
+        showHideEndTasks();
       });
     }
   };
@@ -134,12 +128,9 @@
         <button class="body__buttons  js-showHideEndTasks">
           Ukryj ukończone
         </button> 
-      </span>
-      <span>  
         <button class="body__buttons js-endAllTasks">
           Ukończ wszystkie
         </button>
-      </span>
         `;
       document.querySelector(".js-buttons").innerHTML = htmlButtonString;
     }
