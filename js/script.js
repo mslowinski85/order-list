@@ -22,39 +22,28 @@
   };
 
   const doneTaskToggle = (taskIndex) => {
-    //działa tylko jak się klika w ten sam task
     const tasksLength = tasks.length;
-    if (doneTask === false) {
-      tasks = [
-        ...tasks.slice(0, taskIndex),
-        { ...tasks[taskIndex], done: true },
-        ...tasks.slice(taskIndex + 1, tasksLength),
-      ];
-      doneTask = true;
-    } else {
-      tasks = [
-        ...tasks.slice(0, taskIndex),
-        { ...tasks[taskIndex], done: false },
-        ...tasks.slice(taskIndex + 1, tasksLength),
-      ];
-      doneTask = false;
-    }
 
-    //tasks[taskIndex].done = !tasks[taskIndex].done;
-    //renderTasks();
+    tasks = [
+      ...tasks.slice(0, taskIndex),
+      { ...tasks[taskIndex], done: !tasks[taskIndex].done },
+      ...tasks.slice(taskIndex + 1, tasksLength),
+    ];
     render();
   };
 
   const doneAllTasksToggle = () => {
-
-     for (const task in tasks) {
+    // const editIndex = 0;
+    for (const task in tasks) {
       // console.log(`${task}: ${tasks[task].content}`);
-        tasks = [
-          {...tasks[task], done: true}, //zakańcza tylko pierwszy task - dlaczego? 
-        ];
-       //console.log("ile tasków: " + tasks.length);
-  
-     }
+      tasks = [
+        { ...tasks[task], done: true }, //zakańcza tylko pierwszy task - dlaczego?
+      ];
+      //   editIndex += 1;
+      //tasks = tasks[task].map(({done}) => done);
+      //console.log("ile tasków: " + tasks.length);
+      //taskAllDone = [...tasks];
+    }
     render();
   };
 
