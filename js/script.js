@@ -1,6 +1,7 @@
 {
   let tasks = [];
   let hideDoneTask = false;
+  let doneAllTasksChecked = false;
 
   const onFocus = () => {
     document.getElementById("focusButton").addEventListener("click", () => {
@@ -10,6 +11,7 @@
 
   const removeTask = (taskIndex) => {
     const tasksLength = tasks.length;
+
     tasks = [
       ...tasks.slice(0, taskIndex),
       ...tasks.slice(taskIndex + 1, tasksLength),
@@ -32,22 +34,34 @@
 
   const doneAllTasksToggle = () => {
     const tasksLength = tasks.length;
+    doneAllTasksChecked = true;
 
-    for (let task = 0; task < tasks.length; task++) {
-      if (task < tasksLength) {
+    for (let taskIndex = 0; taskIndex < tasks.length; taskIndex++) {
+      if (taskIndex < tasksLength) {
         tasks = [
-          ...tasks.slice(0, task),
-          { ...tasks[task], done: true },
-          ...tasks.slice(task + 1),
+          ...tasks.slice(0, taskIndex),
+          { ...tasks[taskIndex], done: true },
+          ...tasks.slice(taskIndex + 1),
         ];
       }
     }
     render();
   };
 
+  const checkHideDoneTasks = () => {
+    return (hideDoneTask = !hideDoneTask);
+  };
+
   const showHideEndTasks = () => {
     // let itemIndex = 0;
-    // checkHideDoneTasks();
+
+    checkHideDoneTasks();
+    //if (checkHideDoneTasks()){
+    //console.log("wartość hideDoneTask: " + checkHideDoneTasks());
+    // if (checkHideDoneTasks()) {
+    //   tasks = [];
+    // }
+    //} else console.log("false");
 
     // if (hideDoneTask !== false){
     //   tasks = [
@@ -142,27 +156,43 @@
           </button> 
       </li>
       `;
+      // if (tasks[task].done === false > 0)
+      // {
+      //   doneAllTasksChecked = false;
+      // }
     }
 
     document.querySelector(".js-tasks").innerHTML = htmlString;
   };
 
   const renderButtons = () => {
+    const tasksLength = tasks.length;
     let htmlButtonString = "";
 
-    if (tasks.length === 0) {
-      document.querySelector(".js-buttons").innerHTML = htmlButtonString;
+    if (tasksLength === 0) {
+      htmlButtonString = ``;
+      //document.querySelector(".js-buttons").innerHTML = htmlButtonString;
+    } else if (doneAllTasksChecked === false) {
+      htmlButtonString = `
+      <button class="body__buttons  js-showHideEndTasks">
+        Ukryj ukończone
+      </button> 
+      <button class="body__buttons js-endAllTasks">
+        Ukończ wszystkie
+      </button>
+      `;
     } else {
       htmlButtonString = `
-        <button class="body__buttons  js-showHideEndTasks">
-          Ukryj ukończone
-        </button> 
-        <button class="body__buttons js-endAllTasks">
-          Ukończ wszystkie
-        </button>
-        `;
-      document.querySelector(".js-buttons").innerHTML = htmlButtonString;
+      <button class="body__buttons  js-showHideEndTasks">
+        Ukryj ukończone
+      </button> 
+      <button class="body__buttons--disabled js-endAllTasks" disabled>
+        Ukończ wszystkie
+      </button>
+      `;
     }
+
+    document.querySelector(".js-buttons").innerHTML = htmlButtonString;
   };
 
   const render = () => {
@@ -176,7 +206,9 @@
 
   const addNewTask = (newTaskContent) => {
     tasks = [...tasks, { content: newTaskContent, done: false }];
-
+    if (doneAllTasksChecked === true) {
+      doneAllTasksChecked = false;
+    }
     render();
   };
 
