@@ -18,6 +18,10 @@
     text-decoration: line-through;
 }
 
+.list__item--hiden {
+    display: none;
+}
+
 .list__button{
     background-color: hsl(120, 100%, 25%);
     border: none;

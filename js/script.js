@@ -1,9 +1,6 @@
 {
   let tasks = [];
   let hideDoneTask = false;
-  //let doneTasks = false;
-  // let doneTask = false;
-  //let buttonsHidden = false;
 
   const onFocus = () => {
     document.getElementById("focusButton").addEventListener("click", () => {
@@ -17,7 +14,7 @@
       ...tasks.slice(0, taskIndex),
       ...tasks.slice(taskIndex + 1, tasksLength),
     ];
-    //tasks.splice(taskIndex, 1); remove one element at index "taskIndex"
+
     render();
   };
 
@@ -29,29 +26,62 @@
       { ...tasks[taskIndex], done: !tasks[taskIndex].done },
       ...tasks.slice(taskIndex + 1, tasksLength),
     ];
+
     render();
   };
 
   const doneAllTasksToggle = () => {
-    // const editIndex = 0;
-    for (const task in tasks) {
-      // console.log(`${task}: ${tasks[task].content}`);
-      tasks = [
-        { ...tasks[task], done: !task[task].done }, //zakańcza tylko pierwszy task - dlaczego?
-      ];
-      //   editIndex += 1;
-      //tasks = tasks[task].map(({done}) => done);
-      //console.log("ile tasków: " + tasks.length);
-      //taskAllDone = [...tasks];
+    const tasksLength = tasks.length;
+
+    for (let task = 0; task < tasks.length; task++) {
+      if (task < tasksLength) {
+        tasks = [
+          ...tasks.slice(0, task),
+          { ...tasks[task], done: true },
+          ...tasks.slice(task + 1),
+        ];
+      }
     }
     render();
   };
 
-  // };
-
   const showHideEndTasks = () => {
-    if (hideDoneTask) {
-    }
+    // let itemIndex = 0;
+    // checkHideDoneTasks();
+
+    // if (hideDoneTask !== false){
+    //   tasks = [
+    //     ...tasks.slice(0,2),
+    //     { ...tasks.filter(() => tasks.done === false) },
+    //   ];
+    //   hideDoneTask = false;
+    //   console.log("hideDoneTask - false: " + hideDoneTask);
+    //   return;
+    // } else {
+    //   tasks = [
+    //     ...tasks,
+    //     { ...tasks.filter(() => tasks.done === false) },
+    //   ];
+    //   hideDoneTask = true;
+    //   console.log("hideDoneTask - true: " + hideDoneTask);
+    //  // return;
+    // }
+
+    render();
+
+    //   hideDoneTask = true;
+    // } else hideDoneTask = false;
+
+    // if (hideDoneTask === true) {
+    //   tasks = [
+    //     ...tasks,
+    //     { ...tasks.filter((isDone) => isDone.done === true) },
+    //   ];
+    //   hideDoneTask = false;
+    // } else {
+    //   tasks = [...tasks,];
+    //   hideDoneTask = true;
+    // }
   };
 
   const bindToggleDoneEvents = () => {
@@ -82,14 +112,13 @@
       ".js-showHideEndTasks"
     );
 
-    console.log(endAllTasksButton);
     if (endAllTasksButton !== null) {
       endAllTasksButton.addEventListener("click", () => {
         doneAllTasksToggle();
       });
     }
     if (hideAllDoneTasksButton !== null) {
-      hideAllDoneTasksButton.addEventListener("click", (index) => {
+      hideAllDoneTasksButton.addEventListener("click", () => {
         showHideEndTasks();
       });
     }
@@ -101,7 +130,7 @@
     for (const task of tasks) {
       htmlString += `
      
-      <li class="list__item">
+      <li class="list__item"> 
           <button class="list__button js-done">
               ${task.done ? "✓" : ""}
           </button>
@@ -146,13 +175,11 @@
   };
 
   const addNewTask = (newTaskContent) => {
-    // tasks.push({
-    //   content: newTaskContent,
-    // });
-    // document.getElementById("inputTask").value = "";
-    tasks = [...tasks, { content: newTaskContent }];
+    tasks = [...tasks, { content: newTaskContent, done: false }];
+
     render();
   };
+
   const onFormSubmit = (event) => {
     event.preventDefault();
 
