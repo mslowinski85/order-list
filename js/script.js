@@ -29,6 +29,9 @@
       ...tasks.slice(taskIndex + 1, tasksLength),
     ];
 
+
+
+
     render();
   };
 
@@ -36,7 +39,7 @@
     const tasksLength = tasks.length;
     doneAllTasksChecked = true;
 
-    for (let taskIndex = 0; taskIndex < tasks.length; taskIndex++) {
+    for (let taskIndex = 0; taskIndex < tasksLength; taskIndex++) {
       if (taskIndex < tasksLength) {
         tasks = [
           ...tasks.slice(0, taskIndex),
@@ -48,14 +51,18 @@
     render();
   };
 
-  const checkHideDoneTasks = () => {
+  const changeHideDoneTasks = () => {
     return (hideDoneTask = !hideDoneTask);
   };
 
   const showHideEndTasks = () => {
     // let itemIndex = 0;
 
-    checkHideDoneTasks();
+    changeHideDoneTasks();
+    //hideDoneTask = true  w tym momencie - trzeba tutaj znależć wszystkie zaznaczone taski, a w renderowaniu dodać im klasę w css hidden 
+    
+
+
     //if (checkHideDoneTasks()){
     //console.log("wartość hideDoneTask: " + checkHideDoneTasks());
     // if (checkHideDoneTasks()) {
@@ -141,7 +148,7 @@
   const renderTasks = () => {
     let htmlString = "";
 
-    for (const task of tasks) {
+    for (const task of tasks) {   //dodać klasę list__item--hidden do tasków zaznaczonych i ukrytych po naciśnięciu przycisku
       htmlString += `
      
       <li class="list__item"> 
@@ -168,11 +175,21 @@
   const renderButtons = () => {
     const tasksLength = tasks.length;
     let htmlButtonString = "";
+    let doneTasks = 0;
+
+    for (let taskIndex = 0; taskIndex < tasksLength; taskIndex++) {
+      if (tasks[taskIndex].done === true){
+        doneTasks += 1;
+      }
+    }
+    // console.log("trueTasks: " + trueTasks);
+    // console.log("tasksLength: " + tasksLength);
 
     if (tasksLength === 0) {
       htmlButtonString = ``;
       //document.querySelector(".js-buttons").innerHTML = htmlButtonString;
-    } else if (doneAllTasksChecked === false) {
+    } 
+    if (doneAllTasksChecked === false) {
       htmlButtonString = `
       <button class="body__buttons  js-showHideEndTasks">
         Ukryj ukończone
@@ -181,7 +198,8 @@
         Ukończ wszystkie
       </button>
       `;
-    } else {
+    } 
+    if (doneAllTasksChecked === true || doneTasks === tasksLength) {
       htmlButtonString = `
       <button class="body__buttons  js-showHideEndTasks">
         Ukryj ukończone
