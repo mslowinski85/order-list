@@ -16,16 +16,33 @@ html {
 
 .body__container {
     background-color: #ddd; 
-    padding-bottom: 20px;
+    padding: 10px;
 }
+
+.body__container--buttons {
+    background-color: white;
+}
+
+ @media (max-width: 500px) {
+    .body__container--buttons{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 10px;
+     
+    }
+} 
 
 .body__label {
     font-size: xx-large;
-    font-weight: 900;   display: grid;
-    grid-template-columns: 1fr auto auto;
-    word-break: break-all;
-    grid-gap: 10px;
+    font-weight: 900;  
+    padding-top: 10px; 
+    /* display: grid;
+    grid-template-columns: 1fr auto;
+     word-break: break-all; 
+    align-items: center;
+    grid-gap: 20px; */
 }
+
 
 .body__buttons {
     border: none;
@@ -57,10 +74,29 @@ html {
 }
 
 .body__container--toDoListLabel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 20px;
     background-color: white;
     padding: 10px;
     margin-top: 5px;
 } 
+
+@media (max-width: 500px){
+    .body__container--toDoListLabel{
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
+    }
+}
+
+
+/* @media (max-width: 752px){
+    .body__container--toDoListLabel {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;       
+    }
+} */
 
 .body__label--toDoListLabel{
     font-size: large;
