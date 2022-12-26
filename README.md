@@ -1,6 +1,6 @@
-# Order list app ver. 1
+# Order list app ver. 2
 
-![Order_list](https://github.com/mslowinski85/order-list/blob/main/images/print_screen.png)
+![Order_list](https://github.com/mslowinski85/order-list/blob/main/images/print_screen_ver2.png)
 
 ## Website app address
 
@@ -8,15 +8,17 @@
 
 ## Description
 
-It's a first version of ***"To-Do List"*** web application, which You can use the following functions:
+It's a second version of ***"To-Do List"*** web application, which You can use the following functions:
 - **"Add"** new task,
 - **"Delete"** existing task,
-- **"Check"** done task.
+- **"Check"** done task,
 
-This application can grow in new functions with the next versions.
+and new buttons added:
+- **"Hide end tasks"** or **"Show end tasks"**,
+- **"End all tasks"**.
 
 ## Used technologies
 
 - ***HTML*** with using ***BEM*** convention,
 - ***CSS*** with using ***FLEX*** and ***GRID*** layout,
-- ***JAVA SCRIPT***.
+- ***JAVA SCRIPT*** with using ***IMMUTABILITY***.
