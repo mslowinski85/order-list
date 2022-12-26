@@ -31,10 +31,6 @@
     render();
   };
 
-  const changeHideDoneTasks = () => {
-    return (hideDoneTask = !hideDoneTask);
-  };
-
   const doneAllTasksToggle = () => {
     tasks = tasks.map((task) => ({
       ...task,
@@ -70,8 +66,6 @@
   };
 
   const bindButtonsEvents = () => {
-    //if sprawdzający czy po wyrenderowaniu przycisk w ogóle jest
-    //Jeśli tak to łapie eventListenera
     const endAllTasksButton = document.querySelector(".js-endAllTasks");
     const hideAllDoneTasksButton = document.querySelector(
       ".js-showHideEndTasks"
@@ -93,8 +87,12 @@
     let htmlString = "";
 
     for (const task of tasks) {
-          htmlString += `
-          <li class="${hideDoneTask && task.done === true ? "list__item--hiden" : "list__item"}"> 
+      htmlString += `
+          <li class="${
+            hideDoneTask && task.done === true
+              ? "list__item--hiden"
+              : "list__item"
+          }"> 
               <button class="list__button js-done">
                   ${task.done ? "✓" : ""}
               </button>
@@ -106,7 +104,7 @@
               </button> 
           </li>
           `;
-       }
+    }
 
     document.querySelector(".js-tasks").innerHTML = htmlString;
   };
@@ -117,8 +115,8 @@
 
     if (tasksLength > 0) {
       htmlButtonString = `
-        <button class="body__buttons  js-showHideEndTasks">${hideDoneTask ? "Pokaż ukończone" :  "Ukryj ukończone"} </button> 
-        <button class="body__buttons js-endAllTasks "> Ukończ wszystkie </button>
+        <button class="body__buttons  js-showHideEndTasks">${hideDoneTask && tasks.some(({done}) => done) ? "Pokaż ukończone" : "Ukryj ukończone"} </button> 
+        <button class="${tasks.every(({done}) => done) ? "body__buttonDisabled" : "body__buttons"} js-endAllTasks" ${tasks.every(({ done }) => done) ? "disabled" : ""}> Ukończ wszystkie </button>
       `;
     } else htmlButtonString = ``;
 
