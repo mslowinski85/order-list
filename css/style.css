@@ -16,7 +16,7 @@ html {
 
 .body__container {
     background-color: #ddd; 
-    padding: 10px;
+    padding: 20px 0px;
 }
 
 .body__container--buttons {
@@ -35,7 +35,8 @@ html {
 .body__label {
     font-size: xx-large;
     font-weight: 900;  
-    padding-top: 10px; 
+    padding: 10px 0px; 
+    
 }
 
 .body__buttons {
@@ -43,6 +44,7 @@ html {
     color: hsl(180, 100%, 25%);
     background-color: white;
     font-size: medium;
+    transition: 0.3s;
 }
 
 .body__buttonDisabled{
@@ -50,14 +52,8 @@ html {
     background-color: white;
 }
 
-.body__buttons:disabled{
-    border: none;
-    background-color: white;
-    color: gray;
-}
-
 .body__buttons:active{
-    border: 1px solid black;
+    border: none;
 }
 
 .body__buttons:hover {
@@ -69,7 +65,7 @@ html {
     font-size: large;
     font-weight: 900;
     margin-bottom: 1px;
-    padding: 10px;
+    padding: 10px 20px;
 }
 
 .body__container--toDoListLabel {
@@ -77,7 +73,7 @@ html {
     grid-template-columns: 1fr auto;
     grid-gap: 20px;
     background-color: white;
-    padding: 10px;
+    padding: 10px 20px;
     margin-top: 5px;
 } 
 
@@ -92,9 +88,14 @@ html {
     font-size: large;
     font-weight: 900;
 }
+.body__label--addNewTask {
+    font-size: large;
+    font-weight: 900;
+
+}
 
 .body__container--toDoList {
     background-color: white;
-    padding: 5px 10px; 
+    padding: 5px 20px; 
     margin-top: 1px;
 }
