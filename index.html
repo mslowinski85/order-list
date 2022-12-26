@@ -23,48 +23,41 @@
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <script src="js/script.js" defer ></script>
-    
+    <script src="js/script.js" defer></script>
     <meta property="og:image" content="images/share.png" />
     <link rel="icon" href="images/logo.jpg?2" />
   </head>
+  
   <body class="body">
-
-        <div class="body__container">
-            <label class="body__label">Lista zadań</label>
-        </div>
-        <div class="body__container body__container--addNewTaskLabel ">
-            <label >Dodaj nowe zadanie</label>
-        </div>
-        <form class="js-form" id="form">
-          <div class="flex">
-            <div class="flex__item flex__item--input">
-                <input class="flex__input js-newTask" id="inputTask" placeholder="Co jest do zrobienia?" autofocus>
-            </div>
-            <div class="flex__item flex__item--button">
-                <button class="flex__button js-button" id="focusButton" >Dodaj zadanie</button>
-            </div>
-        </div>
-        </form>
-       
-        <div class="body__container body__container--toDoListLabel">
-            <label class="body__label body__label--toDoListLabel">Lista zadań</label>
-              <div class="body__container body__container--buttons js-buttons">
-              </div>
-            
-             
-        </div>
-        <div class="body__container body__container--toDoList">
-            <ul class="list js-tasks">
-                
-            </ul>
-        </div>
+    <div class="body__container">
+      <label class="body__label">Lista zadań</label>
     </div>
-   
-    
- 
-
-
-
+    <div class="body__container body__container--addNewTaskLabel">
+      <label>Dodaj nowe zadanie</label>
+    </div>
+    <form class="js-form" id="form">
+      <div class="flex">
+        <div class="flex__item flex__item--input">
+          <input
+            class="flex__input js-newTask"
+            id="inputTask"
+            placeholder="Co jest do zrobienia?"
+            autofocus
+          />
+        </div>
+        <div class="flex__item flex__item--button">
+          <button class="flex__button js-button" id="focusButton">
+            Dodaj zadanie
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="body__container body__container--toDoListLabel">
+      <label class="body__label body__label--toDoListLabel">Lista zadań</label>
+      <div class="body__container body__container--buttons js-buttons"></div>
+    </div>
+    <div class="body__container body__container--toDoList">
+      <ul class="list js-tasks"></ul>
+    </div>
   </body>
 </html>
