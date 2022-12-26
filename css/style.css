@@ -36,11 +36,6 @@ html {
     font-size: xx-large;
     font-weight: 900;  
     padding-top: 10px; 
-    /* display: grid;
-    grid-template-columns: 1fr auto;
-     word-break: break-all; 
-    align-items: center;
-    grid-gap: 20px; */
 }
 
 
@@ -51,10 +46,14 @@ html {
     font-size: medium;
 }
 
-.body__buttons--disabled {
+.body__buttonDisabled{
+    border: none;
+}
+
+.body__buttons:disabled{
     border: none;
     background-color: white;
-    font-size: medium;
+    color: gray;
 }
 
 .body__buttons:active{
