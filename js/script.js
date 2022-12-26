@@ -115,10 +115,14 @@
 
     if (tasksLength > 0) {
       htmlButtonString = `
-        <button class="body__buttons  js-showHideEndTasks">${hideDoneTask && tasks.some(({done}) => done) ? "Pokaż ukończone" : "Ukryj ukończone"} </button> 
-        <button class="${tasks.every(({done}) => done) ? "body__buttonDisabled" : "body__buttons"} js-endAllTasks" ${tasks.every(({ done }) => done) ? "disabled" : ""}> Ukończ wszystkie </button>
+        <button class="body__buttons  js-showHideEndTasks">
+          ${hideDoneTask && tasks.some(({done}) => done) ? "Pokaż ukończone" : "Ukryj ukończone"} 
+        </button> 
+        <button class="${tasks.every(({done}) => done) ? "body__buttonDisabled" : "body__buttons"} 
+          js-endAllTasks" ${tasks.every(({ done }) => done) ? "disabled" : ""}> Ukończ wszystkie 
+        </button>
       `;
-    } else htmlButtonString = ``;
+    }
 
     document.querySelector(".js-buttons").innerHTML = htmlButtonString;
   };
