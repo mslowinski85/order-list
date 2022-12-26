@@ -1,8 +1,6 @@
 {
   let tasks = [];
-  let allTasks = [];
-  let hideDoneTask = true;
-  let doneAllTasksChecked = false;
+  let hideDoneTask = false;
 
   const onFocus = () => {
     document.getElementById("focusButton").addEventListener("click", () => {
@@ -33,82 +31,22 @@
     render();
   };
 
-  // const changeDoneAllTasksChecked = () => {
-  //   if (doneAllTasksChecked === false){
-  //     return doneAllTasksChecked = true;
-  //   } else return doneAllTasksChecked = false;
-  // };
-
-  const doneAllTasksToggle = () => {
-    // const tasksLength = tasks.length;
-    // doneAllTasksChecked = true;
-    // hideDoneTask = true;
-
-tasks = tasks.map((task) => ({
-  ...task,
-  done: true,
-}) );
-
-    //changeHideDoneTasks(); nie działa
-
-    // if (hideDoneTask = true){
-    //   hideDoneTask = false;
-    // };
-
-    // for (let taskIndex = 0; taskIndex < tasksLength; taskIndex++) {
-    //   if (taskIndex < tasksLength) {
-    //     tasks = [
-    //       ...tasks.slice(0, taskIndex),
-    //       { ...tasks[taskIndex], done: true },
-    //       ...tasks.slice(taskIndex + 1),
-    //     ];
-    //   }
-    // }
-    render();
-  };
-
   const changeHideDoneTasks = () => {
     return (hideDoneTask = !hideDoneTask);
   };
 
-  // const ifTaskDone = () => {
-  //   const tasksLength = tasks.length;
+  const doneAllTasksToggle = () => {
+    tasks = tasks.map((task) => ({
+      ...task,
+      done: true,
+    }));
 
-  //   for (let taskIndex = 0; taskIndex < tasksLength; taskIndex++) {
-  //     if (tasks[taskIndex].done === false) {
-  //       return true;
-  //     }
-  //   }
-  // };
+    render();
+  };
 
   const showHideEndTasks = () => {
-    //const tasksLength = tasks.length;
-
-    // let itemIndex = 0;
-    //hideDoneTask = true;
-
-    console.log("HDT1: " + hideDoneTask);
-
-    switch (hideDoneTask) {
-      case false:
-        tasks = [...allTasks];
-        changeHideDoneTasks();
-        console.log("HDT-false: " + hideDoneTask);
-        console.log(tasks);
-        break;
-
-      case true:
-        allTasks = [...tasks];
-        tasks = [...tasks.filter((doneTask) => doneTask.done === false)];
-        changeHideDoneTasks();
-        console.log("HDT-true: " + hideDoneTask);
-        console.log(tasks);
-        break;
-    }
+    hideDoneTask = !hideDoneTask;
     render();
-
-    // console.log(tasks);
-    console.log("allTasks: ", allTasks);
   };
 
   const bindToggleDoneEvents = () => {
@@ -153,14 +91,10 @@ tasks = tasks.map((task) => ({
 
   const renderTasks = () => {
     let htmlString = "";
-    console.log("renderTasks - hideDoneTask: ", hideDoneTask);
 
     for (const task of tasks) {
-      switch (hideDoneTask){
-        case true:
           htmlString += `
-     
-          <li class="list__item"> 
+          <li class="${hideDoneTask && task.done === true ? "list__item--hiden" : "list__item"}"> 
               <button class="list__button js-done">
                   ${task.done ? "✓" : ""}
               </button>
@@ -172,39 +106,7 @@ tasks = tasks.map((task) => ({
               </button> 
           </li>
           `;
-        break;
-        case false:
-                 htmlString += `
-
-          <li class="list__item list__item--hiden">
-          <button class="list__button ">
-          ${task.done ? "✓" : ""}
-      </button>
-      <span class="${task.done ? " list__item--done" : ""}">
-          ${task.content}
-      </span>
-      <button class="list__button list__button--delete js-remove">
-          🗑
-      </button>
-          </li>
-          `;
-        break;
-      }
-      //dodać klasę list__item--hiden do tasków zaznaczonych i ukrytych po naciśnięciu przycisku
-
-      //     if (hideDoneTask === true){
-     
-      //      }
-      //      else {
-
-  
-      // }
-
-      // if (tasks[task].done === false > 0)
-      // {
-      //   doneAllTasksChecked = false;
-      // }
-    }
+       }
 
     document.querySelector(".js-tasks").innerHTML = htmlString;
   };
@@ -212,47 +114,13 @@ tasks = tasks.map((task) => ({
   const renderButtons = () => {
     const tasksLength = tasks.length;
     let htmlButtonString = "";
-    let doneTasks = 0;
 
-    for (let taskIndex = 0; taskIndex < tasksLength; taskIndex++) {
-      if (tasks[taskIndex].done === true) {
-        doneTasks += 1;
-      }
-    }
-    if (tasksLength > 0 && doneTasks === tasksLength) {
-      doneAllTasksChecked = true;
-      //changeDoneAllTasksChecked();
-    } else doneAllTasksChecked = false;
-    // else changeDoneAllTasksChecked();
-    // console.log("doneTasks: " + doneTasks);
-    // console.log("tasksLength: " + tasksLength);
-    // console.log("doneAllTasksChecked: " + doneAllTasksChecked);
-
-    if (tasksLength === 0 && doneAllTasksChecked === false) {
-      htmlButtonString = ``;
-      //document.querySelector(".js-buttons").innerHTML = htmlButtonString;
-    } else if (tasksLength > 0 && doneAllTasksChecked === false) {
+    if (tasksLength > 0) {
       htmlButtonString = `
-      <button class="body__buttons  js-showHideEndTasks">
-        Ukryj ukończone
-      </button> 
-      <button class="body__buttons js-endAllTasks">
-        Ukończ wszystkie
-      </button>
+        <button class="body__buttons  js-showHideEndTasks">${hideDoneTask ? "Pokaż ukończone" :  "Ukryj ukończone"} </button> 
+        <button class="body__buttons js-endAllTasks "> Ukończ wszystkie </button>
       `;
-    } else if (
-      (tasksLength > 0 && doneAllTasksChecked === true) ||
-      doneTasks === tasksLength
-    ) {
-      htmlButtonString = `
-      <button class="body__buttons  js-showHideEndTasks">
-        Ukryj ukończone
-      </button> 
-      <button class="body__buttons--disabled js-endAllTasks" disabled>
-        Ukończ wszystkie
-      </button>
-      `;
-    }
+    } else htmlButtonString = ``;
 
     document.querySelector(".js-buttons").innerHTML = htmlButtonString;
   };
@@ -268,9 +136,6 @@ tasks = tasks.map((task) => ({
 
   const addNewTask = (newTaskContent) => {
     tasks = [...tasks, { content: newTaskContent, done: false }];
-    if (doneAllTasksChecked === true) {
-      doneAllTasksChecked = false;
-    }
     render();
   };
 
