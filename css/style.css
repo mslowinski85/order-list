@@ -38,7 +38,6 @@ html {
     padding-top: 10px; 
 }
 
-
 .body__buttons {
     border: none;
     color: hsl(180, 100%, 25%);
@@ -48,6 +47,7 @@ html {
 
 .body__buttonDisabled{
     border: none;
+    background-color: white;
 }
 
 .body__buttons:disabled{
@@ -88,15 +88,6 @@ html {
     }
 }
 
-
-/* @media (max-width: 752px){
-    .body__container--toDoListLabel {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;       
-    }
-} */
-
 .body__label--toDoListLabel{
     font-size: large;
     font-weight: 900;
@@ -107,5 +98,3 @@ html {
     padding: 5px 10px; 
     margin-top: 1px;
 }
-
-
