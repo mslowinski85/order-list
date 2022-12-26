@@ -134,6 +134,7 @@
 
   const addNewTask = (newTaskContent) => {
     tasks = [...tasks, { content: newTaskContent, done: false }];
+    document.getElementById("inputTask").value = "";
     render();
   };
 
@@ -142,10 +143,10 @@
 
     const newTaskContent = document.querySelector(".js-newTask").value.trim();
 
-    if (newTaskContent === "") {
-      return;
+    if (newTaskContent !== "") {
+      addNewTask(newTaskContent);
     }
-    addNewTask(newTaskContent);
+    
   };
 
   const init = () => {
